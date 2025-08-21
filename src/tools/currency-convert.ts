@@ -17,7 +17,7 @@ interface CurrencyConverterResult {
   timestamp: string;
 }
 
-@tool({
+tool({
   name: 'RW-currency-converter',
   description: 'Converts USD amount to GBP, EUR, CAD, and CNY using latest exchange rates',
   parameters: {
