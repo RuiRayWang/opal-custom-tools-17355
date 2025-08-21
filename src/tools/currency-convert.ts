@@ -1,4 +1,4 @@
-import { tool } from '@optimizely-opal/opal-tools-sdk';
+import { tool, ParameterType } from "@optimizely-opal/opal-tools-sdk";
 
 interface CurrencyConverterParams {
   usdAmount: number;
