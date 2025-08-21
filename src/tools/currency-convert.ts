@@ -20,17 +20,15 @@ interface CurrencyConverterResult {
 tool({
   name: 'RW-currency-converter',
   description: 'Converts USD amount to GBP, EUR, CAD, and CNY using latest exchange rates',
-  parameters: {
-    type: 'object',
-    properties: {
-      usdAmount: {
-        type: 'number',
-        description: 'The amount in USD to convert',
-        minimum: 0
+    parameters: [
+      {
+        name: "usdAmount",
+        type: ParameterType.Number,
+        description: "The amount in USD to convert",
+        required: true,
       }
-    },
-    required: ['usdAmount']
-  }
+
+    ]
 })
 export async function currencyConverter(params: CurrencyConverterParams): Promise<CurrencyConverterResult> {
   try {
