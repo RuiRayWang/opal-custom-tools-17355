@@ -16,21 +16,7 @@ interface CurrencyConverterResult {
   conversions: ExchangeRate[];
   timestamp: string;
 }
-
-tool({
-  name: 'RW-currency-converter',
-  description: 'Converts USD amount to GBP, EUR, CAD, and CNY using latest exchange rates',
-    parameters: [
-      {
-        name: "usdAmount",
-        type: ParameterType.Number,
-        description: "The amount in USD to convert",
-        required: true,
-      }
-
-    ]
-})
-export async function currencyConverter(params: CurrencyConverterParams): Promise<CurrencyConverterResult> {
+async function currencyConverter(params: CurrencyConverterParams): Promise<CurrencyConverterResult> {
   try {
     const { usdAmount } = params;
     
@@ -75,3 +61,16 @@ export async function currencyConverter(params: CurrencyConverterParams): Promis
     throw new Error(`Currency conversion failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
   }
 }
+tool({
+  name: 'RW-currency-converter',
+  description: 'Converts USD amount to GBP, EUR, CAD, and CNY using latest exchange rates',
+    parameters: [
+      {
+        name: "usdAmount",
+        type: ParameterType.Number,
+        description: "The amount in USD to convert",
+        required: true,
+      }
+
+    ]
+})(currencyConverter);
